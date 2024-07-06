@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import DataGrid, { Column, Grouping, GroupPanel, Paging, SearchPanel } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 import { apiData } from '../../hooks/useRoute';
@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 
 export const Organization = () => {
-   const { allOrganizaions } = apiData(`${API_LINK}`, 'organizations');
+   const { result } = apiData(`${API_LINK}`, 'organizations');
    const [autoExpandAll, setAutoExpandAll] = useState(true);
    const [showRowLines] = useState(true);
    const [rowAlternationEnabled] = useState(true);
@@ -26,7 +26,7 @@ export const Organization = () => {
    return (
       <div className="col-md-9">
          <Header />
-         <DataGrid dataSource={allOrganizaions} keyExpr="_id" allowColumnReordering={true} width="100%" showBorders={true} showRowLines={showRowLines} rowAlternationEnabled={rowAlternationEnabled}>
+         <DataGrid dataSource={result} keyExpr="_id" allowColumnReordering={true} width="100%" showBorders={true} showRowLines={showRowLines} rowAlternationEnabled={rowAlternationEnabled}>
             <GroupPanel visible={true} />
             <SearchPanel visible={true} />
             <Grouping autoExpandAll={autoExpandAll} />

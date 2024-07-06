@@ -1,19 +1,17 @@
-import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
-export default function SideBar({ userData, setUserData }) {
-   console.log(userData);
+export default function SideBar({ userData, setuserData }) {
    const navigate = useNavigate();
 
    function logOut() {
       localStorage.removeItem('token');
-      setUserData(null);
+      setuserData(null);
       navigate('/login');
    }
 
    return (
       <div className="row">
-         <div className="col-md-3 vh-100 pt-5 shadow">
+         <div className="col-md-3 min-vh-100 pt-5 shadow overflow-y-scroll">
             <div className="links">
                <div className="title-heading py-4 px-1">
                   <Link to="/dashboard" className="h5 ps-3">
@@ -68,8 +66,50 @@ export default function SideBar({ userData, setUserData }) {
                      </div>
                   </div>
                </div>
+               <div className="accordion accordion-flush" id="accordionFlushExample3">
+                  <div className="accordion-item">
+                     <li className="accordion-header">
+                        <h4
+                           className="accordion-button collapsed"
+                           type="button"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#flush-collapseThree"
+                        >
+                           donation orders
+                        </h4>
+                     </li>
+                     <div id="flush-collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample3">
+                        <div className="accordion-body">
+                           <Link className="d-block mb-3" to="orders">
+                              Show orders
+                           </Link>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div className="accordion accordion-flush" id="accordionFlushExample4">
+                  <div className="accordion-item">
+                     <li className="accordion-header">
+                        <h4
+                           className="accordion-button collapsed"
+                           type="button"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#flush-collapseFour"
+                        >
+                           users
+                        </h4>
+                     </li>
+                     <div id="flush-collapseFour" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample4">
+                        <div className="accordion-body">
+                           <Link className="d-block mb-3" to="users">
+                              Show users
+                           </Link>
+                        </div>
+                     </div>
+                  </div>
+               </div>
                {userData ? (
-                  <button className="bg-danger p-3 text-light" onClick={logOut}>
+                  <button className="btn btn-danger ms-3" onClick={logOut}>
                      Logout
                   </button>
                ) : ''}

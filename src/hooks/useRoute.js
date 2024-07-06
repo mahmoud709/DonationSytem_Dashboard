@@ -5,7 +5,13 @@ import { useEffect, useState } from "react";
 export const apiData = function useRoute(apiLink, route) {
     const [dateList, setdateList] = useState([]);
     async function getInfo() {
-        const { data } = await axios.get(`${apiLink}/${route}`);
+        const token = localStorage.getItem("token");
+        const { data } = await axios.get(`${apiLink}/${route}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
         setdateList(data);
     }
     useEffect(() => {

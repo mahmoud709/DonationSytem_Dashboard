@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiSingleItem } from '../../hooks/useRoute';
 import { API_LINK } from '../../utils/api';
@@ -22,10 +22,10 @@ export default function OrganizationInfo() {
                      <div className="row mt-3">
                         {data.images.length > 0
                            ? data.images.slice(2).map((el, index) => (
-                                <div className="col-6" key={index}>
-                                   <img src={el.url} className="w-100 h-100" alt="small-img" loading="lazy" onClick={() => handleImgChange(el.url)} />
-                                </div>
-                             ))
+                              <div className="col-6" key={index}>
+                                 <img src={el.url} className="w-100 h-100" alt="small-img" loading="lazy" onClick={() => handleImgChange(el.url)} />
+                              </div>
+                           ))
                            : null}
                      </div>
                   </div>

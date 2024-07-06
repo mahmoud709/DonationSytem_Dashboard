@@ -1,15 +1,13 @@
-import React from 'react'
-import Header from 'components/Headers/Header.js';
-import { API_LINK } from '../../utils/api.js';
-import { apiData } from 'hooks/useRoute';
 import { Link } from 'react-router-dom';
+import { API_LINK } from '../../utils/api';
+import Header from '../Header/Header';
+import { apiData } from '../../hooks/useRoute';
 
 export default function Brands() {
-    const { brands } = apiData(`${API_LINK}`, 'brands');
+    const { result } = apiData(`${API_LINK}`, 'brands');
     return (
-        <>
+        <div className='col-md-9'>
             <Header />
-            {/* Page content */}
             <table className="table">
                 <thead>
                     <tr>
@@ -20,9 +18,9 @@ export default function Brands() {
                     </tr>
                 </thead>
                 <tbody>
-                    {brands && brands.length > 0 ? (
+                    {result && result.length > 0 ? (
                         <>
-                            {brands.map((el, index) => {
+                            {result.map((el, index) => {
                                 return (
                                     <tr key={index} >
                                         <td className="fs-6 fw-bold">{index + 1}</td>
@@ -42,6 +40,6 @@ export default function Brands() {
                     )}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
