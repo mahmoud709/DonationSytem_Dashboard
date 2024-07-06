@@ -13,8 +13,9 @@ export const Orders = () => {
 
    function actionsTemplate(rowData) {
       return (
+         // userinfo?._id
          <>
-            <Link className="fa-solid mx-2 fa-1x fa-plus text-dark" to={`/give-coins/${rowData.data.userinfo?._id}`}></Link>
+            <Link className="fa-solid mx-2 fa-1x fa-plus text-dark" to={`/coins/order/add/${rowData.data._id}`}></Link>
          </>
       );
    }
@@ -32,8 +33,9 @@ export const Orders = () => {
             <GroupPanel visible={true} />
             <SearchPanel visible={true} />
             <Grouping autoExpandAll={autoExpandAll} />
-            <Paging defaultPageSize={6} />
+            <Paging defaultPageSize={10} />
             <Column dataField="itemsName" dataType="string" />
+            <Column dataField="ordercoins" dataType="string" />
             <Column dataField="location" dataType="string" />
             <Column dataField="quantity" dataType="number" />
             <Column dataField="phone" dataType="number" />
@@ -43,7 +45,7 @@ export const Orders = () => {
                dataField="userinfo.username"
             />
             <Column
-               caption="userID"
+               caption="Order"
                dataField="userinfo._id"
             />
             <Column

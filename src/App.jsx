@@ -40,7 +40,7 @@ function App() {
                <Route path="brands/:id" element={<BrandInfo />} />
                <Route path="brands/add" element={<AddBrand />} />
                <Route path="orders" element={<Orders />} />
-               <Route path='give-coins/:id' element={<GiveCoins />} />
+               <Route path='/coins/order/add/:id' element={<GiveCoins />} />
                <Route path='users' element={<Users />} />
             </Route>
          </Routes>

@@ -1,4 +1,4 @@
-export const API_LINK = "https://donation-system-utjy.onrender.com";
+export const API_LINK = "http://localhost:5000";
 
 //http://localhost:5000
 //'https://donation-system-utjy.onrender.com'
